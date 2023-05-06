@@ -34,7 +34,6 @@ func ConnectDB() {
 
 	dsn := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable", os.Getenv("PGHOST"), os.Getenv("PGPORT"), os.Getenv("PGUSER"), os.Getenv("PGPASSWORD"), os.Getenv("PGDATABASE"))
 
-	//dsn := "host= containers-us-west-147.railway.app port=6752 user=postgres password=jGfRHi794rN0a0BDVG4N dbname=railway sslmode=disable"
 	// Connect to the DB and initialize the DB variable
 	DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
 
