@@ -5,7 +5,6 @@ import (
 	"github.com/yi-lin-1234/purchase-review-backend/internal/model"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
-	"os"
 )
 
 // DB Declare the variable for the database
@@ -32,8 +31,9 @@ func ConnectDB() {
 
 	var err error
 
-	dsn := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", os.Getenv("DATABASE_URL"), os.Getenv("PGPORT"), os.Getenv("PGUSER"), os.Getenv("PGPASSWORD"), os.Getenv("PGDATABASE"))
+	//dsn := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", os.Getenv("DATABASE_URL"), os.Getenv("PGPORT"), os.Getenv("PGUSER"), os.Getenv("PGPASSWORD"), os.Getenv("PGDATABASE"))
 
+	dsn := "host= containers-us-west-147.railway.app port=6752 user=postgres password=jGfRHi794rN0a0BDVG4N dbname=railway sslmode=disable"
 	// Connect to the DB and initialize the DB variable
 	DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
 
