@@ -5,6 +5,7 @@ import (
 	"github.com/yi-lin-1234/purchase-review-backend/database"
 	"github.com/yi-lin-1234/purchase-review-backend/router"
 	"log"
+	"os"
 )
 
 func main() {
@@ -18,6 +19,10 @@ func main() {
 	// Set up the router
 	router.SetupRoutes(app)
 
-	// Start server
-	log.Fatal(app.Listen(":8000"))
+	// Start server(local development)
+	//log.Fatal(app.Listen(":8000"))
+
+	// Start server(pro development)
+	port := os.Getenv("PORT")
+	log.Fatal(app.Listen("0.0.0.0:" + port))
 }
