@@ -32,11 +32,8 @@ func ConnectDB() {
 
 	var err error
 
-	dsn := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable", os.Getenv("PGHOST"), os.Getenv("PGPORT"), os.Getenv("PGUSER"), os.Getenv("PGPASSWORD"), os.Getenv("PGDATABASE"))
-
 	// Connect to the DB and initialize the DB variable
-	DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
-
+	DB, err = gorm.Open(postgres.Open(os.Getenv("DATABASE_URL")), &gorm.Config{})
 	if err != nil {
 		panic("failed to connect database")
 	}
